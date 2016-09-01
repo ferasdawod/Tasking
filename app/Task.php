@@ -10,11 +10,11 @@ class Task extends Model
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'userId');
     }
 
     public function issuedBy()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'userId');
     }
 }
