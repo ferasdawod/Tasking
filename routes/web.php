@@ -19,6 +19,8 @@ Route::get('/home', function() {
     return view('home');
 })->name("home");
 
-Route::get('/dashboard', 'TaskController@index');
+Route::post('/task/create', 'TaskController@store')->name('task.create');
+
+Route::get('/dashboard', 'TaskController@index')->name('dashboard');
 
 Auth::routes();
