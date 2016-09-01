@@ -8,10 +8,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Tasking</title>
+    <title>Tasker</title>
 
     <!-- Styles -->
+    @yield("additional_styles")
     <link href="/css/app.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
 
@@ -28,17 +30,19 @@
         <div class="navbar-header">
 
             <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+            @if (Auth::user())
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            @endif
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                Laravel
+                @yield("headerBrand")
             </a>
         </div>
 
@@ -51,10 +55,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
-                @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
-                @else
+                @if (Auth::user())
                     <li>
                         <div class="navbar-text">{{ Auth::user()->name }}</div>
                     </li>
@@ -101,5 +102,6 @@
 <script src="/js/app.js"></script>
 <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+@yield('scripts')
 </body>
 </html>

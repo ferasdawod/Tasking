@@ -1,0 +1,50 @@
+body {
+    background-image: url('../images/bg.jpg');
+    background-size: cover;
+}
+@font-face {
+    font-family: roboto;
+    src: url(../fonts/Roboto-Thin.ttf);
+}
+p {
+    font-family: roboto;
+}
+nav {
+    background-color: rgba(255, 255, 255, 0.0) !important;
+    border: 0px !important;
+}
+.content {
+    margin-top: 150px;
+}
+.vr {
+    width:2px;
+    height:300px;
+    background-color:#6b6b6b;
+    box-shadow: #aaaaaa 0px 0px 10px;
+}
+.hr {
+    width:300px;
+    height:2px;
+    display: none;
+    background-color:#6b6b6b;
+    box-shadow: #aaaaaa 0px 0px 10px;
+}
+.slogan {
+    margin-left: 120px;
+    text-shadow: #c2c2da 0px 5px 10px;
+    font-size: 5em;
+    font-weight: 300;
+    color: #6b6b6b;
+}
+
+.getStarted {
+    text-shadow: #c2c2da 0px 5px 10px;
+    font-size: 4em;
+    font-weight: 300;
+    color: #6b6b6b;
+}
+.buttons {
+    font-weight: 300;
+    margin-left: 60px;
+}
+
