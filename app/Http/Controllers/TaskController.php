@@ -24,6 +24,12 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request,
+            [
+                'title' => 'required',
+                'content' => 'required'
+            ]);
+        
         $task = new Task();
         $task->fill($request->all());
         $task->isDone = false;
@@ -31,7 +37,7 @@ class TaskController extends Controller
         $task->issuedById = Auth::user()->id;
         $task->userId = $request->userId;
         $task->save();
-        
+
         return redirect()->route('dashboard');
     }
 
