@@ -2,23 +2,27 @@
 
 @section('content')
     <div class="container">
-        <table class="table table-hover table-striped">
+        <table class="table table-hover">
             <thead>
             <th>Task ID</th>
             <th>Title</th>
-            <th>Description</th>
-            <th>Progress</th>
-            <th>Options</th>
+            <th>Content</th>
+            <th>Status</th>
+            <th>Actions</th>
             </thead>
             <tbody>
             @foreach($tasks as $task)
                 <tr>
-                    <td>$task->id</td>
-                    <td>$task->title</td>
-                    <td>$task->content</td>
-                    <td><span class="label label-success">$task->isDone</span></td>
+                    <td>{{ $task->id }}</td>
+                    <td>{{ $task->title }}</td>
+                    <td>{{ $task->content }}</td>
+                    <td><span class="label {{ $task->isDone ? 'label-success' : 'label-danger' }}">{{ $task->isDone ? 'Done' : 'Pending' }}</span></td>
                     <td>
-                        <button type="btn btn-primary"><i class="fa fa-cog"></i></button>
+                        <a href="javascript:void(0);" onclick="$('#finish-task-{{$task->id}}').submit()" class="text-success"><span class="fa fa-check"></span></a> |
+                        <a href="javascript:void(0);" onclick="$('#delete-task-{{$task->id}}').submit()" class="text-danger"><span class="fa fa-trash"></span></a>
+
+                        <form id="finish-task-{{$task->id}}" method="post" action="{{ route('task.finish', $task->id) }}">{{ csrf_field() }}</form>
+                        <form id="delete-task-{{$task->id}}" method="post" action="{{ route('task.delete', $task->id) }}">{{ csrf_field() }}</form>
                     </td>
                 </tr>
 

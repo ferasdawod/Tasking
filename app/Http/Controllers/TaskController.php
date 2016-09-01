@@ -24,11 +24,27 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
-        $task = Task::create($request->all());
+        $task = new Task();
+        $task->fill($request->all());
+        $task->isDone = false;
 
-        $user = User::find($request->userId);
-        $user->tasks()->save($task);
+        $task->issuedById = Auth::user()->id;
+        $task->userId = $request->userId;
+        $task->save();
+        
+        return redirect()->route('dashboard');
+    }
 
+    public function finishTask(Task $task)
+    {
+        $task->isDone = true;
+        $task->save();
+        return redirect()->route('dashboard');
+    }
+
+    public function delete(Task $task)
+    {
+        $task->delete();
         return redirect()->route('dashboard');
     }
 }
