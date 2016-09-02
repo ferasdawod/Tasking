@@ -9,15 +9,6 @@
 @section('content')
 <div class="container content">
     <div class="row">
-<<<<<<< HEAD
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h2>The Great Tasking Application</h2></div>
-
-                <div class="panel-body">
-                    <p>Welcome to the great Tasking application. to get started login below</p>
-                    <p><a href="{{ url('/login') }}" class="btn btn-primary">Login</a></p>
-=======
         <div class="col-xs-12 col-md-6">
             <p class="slogan">Tasking<br>Made easy.</p>
         </div>
@@ -41,7 +32,6 @@
                             <button class="btn btn-danger btn-lg" style="width: 150px">Dashboard</button>
                         </a>
                     @endif
->>>>>>> 6334454fcce312b50b87f1581de00682f1cff3d6
                 </div>
             </div>
         </div>

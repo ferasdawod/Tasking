@@ -42,11 +42,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-<<<<<<< HEAD
-                <span class="fa fa-tasks"> Tasking</span>
-=======
                 @yield("headerBrand")
->>>>>>> 6334454fcce312b50b87f1581de00682f1cff3d6
             </a>
         </div>
 
