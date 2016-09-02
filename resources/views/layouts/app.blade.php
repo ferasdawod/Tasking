@@ -8,10 +8,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Tasking</title>
+    <title>Tasker</title>
 
     <!-- Styles -->
+    @yield("additional_styles")
     <link href="/css/app.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
 
@@ -28,17 +30,23 @@
         <div class="navbar-header">
 
             <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+            @if (Auth::user())
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            @endif
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
+<<<<<<< HEAD
                 <span class="fa fa-tasks"> Tasking</span>
+=======
+                @yield("headerBrand")
+>>>>>>> 6334454fcce312b50b87f1581de00682f1cff3d6
             </a>
         </div>
 
@@ -51,10 +59,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
-                @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
-                @else
+                @if (Auth::user())
                     <li>
                         <a href="javascript:;">{{ Auth::user()->name }}</a>
                     </li>
@@ -81,5 +86,6 @@
 <script src="/js/app.js"></script>
 <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+@yield('scripts')
 </body>
 </html>
