@@ -4,39 +4,41 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12">
-                <table class="table table-hover">
-                    <thead>
-                    <th>Task ID</th>
-                    <th>Title</th>
-                    <th>Content</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                    </thead>
-                    <tbody>
-                    @foreach($tasks as $task)
-                        <tr>
-                            <td>{{ $task->id }}</td>
-                            <td>{{ $task->title }}</td>
-                            <td>{{ $task->content }}</td>
-                            <td>
-                                <span class="label {{ $task->isDone ? 'label-success' : 'label-danger' }}">{{ $task->isDone ? 'Done' : 'Pending' }}</span>
-                            </td>
-                            <td>
-                                <a href="javascript:void(0);" onclick="$('#finish-task-{{$task->id}}').submit()"
-                                   class="text-success"><span class="fa fa-check"></span></a> |
-                                <a href="javascript:void(0);" onclick="$('#delete-task-{{$task->id}}').submit()"
-                                   class="text-danger"><span class="fa fa-trash"></span></a>
+                @if ($tasks->count() > 0)
+                    <table class="table table-hover">
+                        <thead>
+                        <th>Task ID</th>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                        </thead>
+                        <tbody>
+                        @foreach($tasks as $task)
+                            <tr>
+                                <td>{{ $task->id }}</td>
+                                <td>{{ $task->title }}</td>
+                                <td>{{ $task->content }}</td>
+                                <td>
+                                    <span class="label {{ $task->isDone ? 'label-success' : 'label-danger' }}">{{ $task->isDone ? 'Done' : 'Pending' }}</span>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0);" onclick="$('#finish-task-{{$task->id}}').submit()"
+                                       class="text-success"><span class="fa fa-check"></span></a> |
+                                    <a href="javascript:void(0);" onclick="$('#delete-task-{{$task->id}}').submit()"
+                                       class="text-danger"><span class="fa fa-trash"></span></a>
 
-                                <form id="finish-task-{{$task->id}}" method="post" style="display: none;"
-                                      action="{{ route('task.finish', $task->id) }}">{{ csrf_field() }}</form>
-                                <form id="delete-task-{{$task->id}}" method="post" style="display: none;"
-                                      action="{{ route('task.delete', $task->id) }}">{{ csrf_field() }}</form>
-                            </td>
-                        </tr>
+                                    <form id="finish-task-{{$task->id}}" method="post" style="display: none;"
+                                          action="{{ route('task.finish', $task->id) }}">{{ csrf_field() }}</form>
+                                    <form id="delete-task-{{$task->id}}" method="post" style="display: none;"
+                                          action="{{ route('task.delete', $task->id) }}">{{ csrf_field() }}</form>
+                                </td>
+                            </tr>
 
-                    @endforeach
-                    </tbody>
-                </table>
+                        @endforeach
+                        </tbody>
+                    </table>
+                @endif
             </div>
         </div>
 
