@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     @yield("additional_styles")
+    <style>
+    </style>
     <link href="/css/app.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
