@@ -51,7 +51,7 @@
                                             <td>{{ $task->id }}</td>
                                             <td>{{ $task->title }}</td>
                                             <td>{{ $task->content }}</td>
-                                            <td>{{ $task->issuedBy->name == Auth::user()->name ? 'Me' : $task->issuedBy->name}}</td>
+                                            <td>{{ App\User::find($task->issuedById)->name == Auth::user()->name ? 'Me' : App\User::find($task->issuedById)->name}}</td>
                                             <td>
                                                 <span class="label {{ $task->isDone ? 'label-success' : 'label-danger' }}">{{ $task->isDone ? 'Done' : 'Pending' }}</span>
                                             </td>
