@@ -19,7 +19,7 @@ class TaskController extends Controller
 
     public function index()
     {
-        return view('dashboard')->with(['tasks' => Auth::user()->tasks, 'users' => User::all('name', 'id')]);
+        return view('dashboard')->with(['tasks' => Auth::user()->tasks, 'users' => User::all('name', 'id'), 'userTasks' => Task::all()]);
     }
 
     public function store(Request $request)
